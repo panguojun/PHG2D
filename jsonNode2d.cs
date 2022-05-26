@@ -3,17 +3,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 [System.Serializable]
-
-[System.Serializable]
 class Node
 {
     public string name;
 	public string parent;
-	public int img;
+	public int img = -1;
 	public string type;
-	public Vector3 p;
+	public Vector2 p;
 	public float ang;
-	public Vector3 s;
+	public Vector2 s;
 	//public Trigger []trigger;
 }
 [System.Serializable]
@@ -25,20 +23,22 @@ public class jsonNode2d : MonoBehaviour
 {
 	public GameObject nodetemp;
 	public string jsonData;
-	public Texture[] texture;
+	public Texture[] textures;
 
-    void Upate()
+    void OnGUI()
     {
+		if(jsonData == "") return;
         Nodes jsn = JsonUtility.FromJson<Nodes>(jsonData);
         foreach (Node node in jsn.nodes)
         {
-			GUI.DrawTexture(new Rect(node.p.x, node.p.y, 32, 32), textures[node.img], ScaleMode.ScaleToFit, true, 10.0F)
+			if(node.img >= 0)
+				GUI.DrawTexture(new Rect(node.p.x, node.p.y, 32, 32), textures[node.img]);
 		}
     }
 	void onmsg(string json)
 	{
+		Debug.Log("onmsg:" + json);
 		jsonData = json;
-		build3d();
 	}
 	
     public string ReadData()
