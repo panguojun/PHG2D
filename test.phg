@@ -7,4 +7,4 @@ show{x:700;y:200;
 onclick:">a.x";
 }
 
-setup('sprite');tojson2d(show);
+setup('sprite');tojson2d('show');
