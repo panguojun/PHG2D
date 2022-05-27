@@ -2,7 +2,7 @@ a{img:0;x:200}
 b{img:0;y:200}
 row{<a,a,a,a,a>}
 d{y:100;row}
-
+c{<d,d,d,d,d>}
 show{x:700;y:200;
 onclick:">a.x";
 }
