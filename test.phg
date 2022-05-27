@@ -4,7 +4,7 @@ row{<a,a,a,a,a>}
 d{y:100;row}
 
 show{x:700;y:200;
-	<d,d,d,d,d,d>
+onclick:">a.x";
 }
 
 setup('sprite');tojson2d(show);
